@@ -1,0 +1,6 @@
+datasets:
+  flickr_ObjectToPhrase:
+    data_type: images
+    build_info:
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/filtered_flickr/images
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/filtered_flickr/phrasetobbox.json

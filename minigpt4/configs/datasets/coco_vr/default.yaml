@@ -1,0 +1,7 @@
+datasets:
+  coco_vr:
+    data_type: images
+    build_info:
+      storage: /home/users/nus/idmwyk/scratch/temp/dataset/coco_vr
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/coco/images
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/coco_vr/annotations

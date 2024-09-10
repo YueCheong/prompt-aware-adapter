@@ -1,0 +1,5 @@
+datasets:
+  refvg:
+    data_type: images
+    build_info:
+      data_dir: /home/users/nus/idmwyk/scratch/temp/dataset/visual_genome

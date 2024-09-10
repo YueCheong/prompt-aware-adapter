@@ -1,0 +1,5 @@
+datasets:
+  unnatural_instruction:
+    data_type: text
+    build_info:
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/unnatural_instructions/filtered_unnatural_instruction.json

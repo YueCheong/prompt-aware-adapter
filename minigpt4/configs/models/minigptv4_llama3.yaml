@@ -1,0 +1,32 @@
+model:
+  arch: minigpt_v4
+
+  # vit encoder
+  image_size: 448
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  # generation configs
+  prompt: ""
+
+  # llama_model: "please set this value to the path of llama2-chat-7b"
+  llama_model: "/home/users/nus/idmwyk/scratch/temp/checkpoint/Meta-Llama-3.1-8B-Instruct"
+  lora_r: 64
+  lora_alpha: 16
+
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip2_image_train"
+          image_size: 448
+        eval:
+          name: "blip2_image_eval"
+          image_size: 448
+    text_processor:
+        train:
+          name: "blip_caption"
+        eval:
+          name: "blip_caption"

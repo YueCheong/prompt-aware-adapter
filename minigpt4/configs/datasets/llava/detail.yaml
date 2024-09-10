@@ -1,0 +1,6 @@
+datasets:
+  llava_detail:
+    data_type: images
+    build_info:
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/coco/images
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/llava/detail_23k.json

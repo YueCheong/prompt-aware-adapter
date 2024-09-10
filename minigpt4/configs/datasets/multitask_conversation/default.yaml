@@ -1,0 +1,7 @@
+datasets:
+  multitask_conversation:
+    data_type: images
+    build_info:
+    
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/coco/images
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/multitask_conversation/multitask_conversation.json

@@ -1,0 +1,7 @@
+datasets:
+  mathvista:
+    data_type: images
+    build_info:
+      storage: /home/users/nus/idmwyk/scratch/temp/dataset/MathVista
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/MathVista
+      ann_path:  # Not need

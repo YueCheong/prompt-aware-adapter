@@ -1,0 +1,6 @@
+datasets:
+  ocrvqa:
+    data_type: images
+    build_info:
+      image_path: /home/users/nus/idmwyk/scratch/temp/dataset/ocrvqa/images
+      ann_path: /home/users/nus/idmwyk/scratch/temp/dataset/ocrvqa/dataset.json
