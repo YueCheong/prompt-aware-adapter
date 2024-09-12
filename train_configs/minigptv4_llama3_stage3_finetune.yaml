@@ -4,8 +4,8 @@ model:
   max_txt_len: 1024
   image_size: 448
   end_sym: "</s>"
-  llama_model: "/home/users/nus/idmwyk/scratch/temp/checkpoint/Meta-Llama-3.1-8B-Instruct" # change your llama model path
-  ckpt: "/home/users/nus/idmwyk/scratch/temp/output/saved-ckpt/minigptv4/stage2/20240909225/checkpoint_49.pth"  # "/path/to/pretrained_checkpoint"
+  llama_model: "/home/users/nus/dcshq/scratch/temp/checkpoint/Meta-Llama-3.1-8B-Instruct" # change your llama model path
+  ckpt: "/home/users/nus/dcshq/scratch/temp/output/saved-ckpt/minigptv4/stage2/20240909225/checkpoint_49.pth"  # "/path/to/pretrained_checkpoint"
   use_grad_checkpoint: True
   chat_template: True
   lora_r: 64
@@ -32,7 +32,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 30
+    sample_ratio: 10
 
   refcoco: # checked
     batch_size: 4
@@ -43,7 +43,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 25
+    sample_ratio: 10
 
   refcocop: # checked
     batch_size: 4
@@ -54,7 +54,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 25
+    sample_ratio: 10
 
   refcocog: # checked
     batch_size: 4
@@ -65,7 +65,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 25
+    sample_ratio: 10
 
   refvg: # checked
     batch_size: 4
@@ -76,7 +76,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 40
+    sample_ratio: 10
 
   invrefcoco: # checked
     batch_size: 4
@@ -120,7 +120,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 50
+    sample_ratio: 10
 
   coco_vqa: # checked
     batch_size: 4
@@ -131,7 +131,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 15
+    sample_ratio: 10
 
   ocrvqa: #  checked
     batch_size: 4
@@ -142,7 +142,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 30
+    sample_ratio: 10
 
   ok_vqa:  # checked
     batch_size: 4
@@ -263,7 +263,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 10 
+    sample_ratio: 30 
 
   mathvista: # checked
     batch_size: 2
@@ -274,7 +274,7 @@ datasets:
     text_processor:
       train:
         name: "blip_caption"
-    sample_ratio: 10        
+    sample_ratio: 30        
 
 
 run:
@@ -292,7 +292,7 @@ run:
   iters_per_epoch: 1000
 
   seed: 42
-  output_dir: "/home/users/nus/idmwyk/scratch/temp/output/saved-ckpt/minigptv4/stage3" #"/path/to/save_checkpoint"
+  output_dir: "/home/users/nus/dcshq/scratch/temp/output/saved-ckpt/minigptv4/stage3" #"/path/to/save_checkpoint"
 
   amp: True
   resume_ckpt_path: null
