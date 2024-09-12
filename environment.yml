@@ -33,3 +33,4 @@ dependencies:
     - scikit-image
     - visual-genome
     - wandb
+    - datasets
