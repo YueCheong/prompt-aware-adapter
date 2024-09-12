@@ -1,0 +1,265 @@
+| distributed init (rank 3, world 4): env://| distributed init (rank 0, world 4): env://
+| distributed init (rank 1, world 4): env://
+
+| distributed init (rank 2, world 4): env://
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/coco_captions/coco_karpathy_train.json
+vis_path:/home/users/nus/idmwyk/scratch/temp/dataset/coco/images/train2014
+loading dataset refcoco into memory...
+creating index...
+index created.
+DONE (t=6.15s)
+loading dataset refcoco+ into memory...
+creating index...
+index created.
+DONE (t=6.29s)
+loading dataset refcocog into memory...
+creating index...
+index created.
+DONE (t=5.92s)
+loading dataset refcoco into memory...
+creating index...
+index created.
+DONE (t=6.48s)
+loading dataset refcoco+ into memory...
+creating index...
+index created.
+DONE (t=2.65s)
+loading dataset refcocog into memory...
+creating index...
+index created.
+DONE (t=6.61s)
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/gqa/train_balanced_questions.json
+vis_path:/home/users/nus/idmwyk/scratch/temp/dataset/gqa/images/train2014
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/vqav2/vqa_train.json
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/vqav2/vqa_val.json
+vis_path:/home/users/nus/idmwyk/scratch/temp/dataset/coco/images/train2014
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/okvqa/okvqa_train.json
+vis_path:/home/users/nus/idmwyk/scratch/temp/dataset/coco/images/train2014
+Using downloaded and verified file: /home/users/nus/idmwyk/scratch/temp/dataset/aokvqa/aokvqa_v1p0_train.json
+vis_path:/home/users/nus/idmwyk/scratch/temp/dataset/coco/images/train2014
+len(exist_annotation):11106
+trainable params: 27262976 || all params: 8057524224 || trainable%: 0.33835425426081844
+Position interpolate from 16x16 to 32x32
+Load Minigpt-4-LLM Checkpoint: /home/users/nus/idmwyk/scratch/temp/output/saved-ckpt/minigptv4/stage2/20240909225/checkpoint_49.pth
+model arch:
+ MiniGPTv4(
+  (llama_model): PeftModelForCausalLM(
+    (base_model): LoraModel(
+      (model): LlamaForCausalLM(
+        (model): LlamaModel(
+          (embed_tokens): Embedding(128256, 4096)
+          (layers): ModuleList(
+            (0-31): 32 x LlamaDecoderLayer(
+              (self_attn): LlamaAttention(
+                (q_proj): Linear(
+                  in_features=4096, out_features=4096, bias=False
+                  (lora_dropout): Dropout(p=0.05, inplace=False)
+                  (lora_A): Linear(in_features=4096, out_features=64, bias=False)
+                  (lora_B): Linear(in_features=64, out_features=4096, bias=False)
+                )
+                (k_proj): Linear(in_features=4096, out_features=1024, bias=False)
+                (v_proj): Linear(
+                  in_features=4096, out_features=1024, bias=False
+                  (lora_dropout): Dropout(p=0.05, inplace=False)
+                  (lora_A): Linear(in_features=4096, out_features=64, bias=False)
+                  (lora_B): Linear(in_features=64, out_features=1024, bias=False)
+                )
+                (o_proj): Linear(in_features=4096, out_features=4096, bias=False)
+                (rotary_emb): LlamaRotaryEmbedding()
+              )
+              (mlp): LlamaMLP(
+                (gate_proj): Linear(in_features=4096, out_features=14336, bias=False)
+                (up_proj): Linear(in_features=4096, out_features=14336, bias=False)
+                (down_proj): Linear(in_features=14336, out_features=4096, bias=False)
+                (act_fn): SiLU()
+              )
+              (input_layernorm): LlamaRMSNorm((4096,), eps=1e-05)
+              (post_attention_layernorm): LlamaRMSNorm((4096,), eps=1e-05)
+            )
+          )
+          (norm): LlamaRMSNorm((4096,), eps=1e-05)
+          (rotary_emb): LlamaRotaryEmbedding()
+        )
+        (lm_head): CastOutputToFloat(
+          (0): Linear(in_features=4096, out_features=128256, bias=False)
+        )
+      )
+    )
+  )
+  (visual_encoder): VisionTransformer(
+    (patch_embed): PatchEmbed(
+      (proj): Conv2d(3, 1408, kernel_size=(14, 14), stride=(14, 14))
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (blocks): ModuleList(
+      (0-38): 39 x Block(
+        (norm1): LayerNorm((1408,), eps=1e-06, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=1408, out_features=4224, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=1408, out_features=1408, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (norm2): LayerNorm((1408,), eps=1e-06, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=1408, out_features=6144, bias=True)
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=6144, out_features=1408, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+  )
+  (ln_vision): LayerNorm((1408,), eps=1e-05, elementwise_affine=True)
+  (local_attn): LocalAttention(
+    (txt): Linear(in_features=4096, out_features=1408, bias=True)
+    (img): Linear(in_features=1408, out_features=1408, bias=True)
+  )
+  (llama_proj): Linear(in_features=5632, out_features=4096, bias=True)
+)
+batch sizes [[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2]]
+module.llama_model.base_model.model.model.layers.0.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.0.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.0.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.0.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.1.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.1.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.1.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.1.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.2.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.2.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.2.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.2.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.3.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.3.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.3.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.3.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.4.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.4.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.4.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.4.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.5.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.5.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.5.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.5.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.6.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.6.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.6.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.6.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.7.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.7.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.7.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.7.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.8.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.8.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.8.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.8.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.9.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.9.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.9.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.9.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.10.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.10.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.10.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.10.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.11.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.11.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.11.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.11.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.12.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.12.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.12.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.12.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.13.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.13.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.13.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.13.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.14.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.14.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.14.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.14.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.15.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.15.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.15.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.15.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.16.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.16.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.16.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.16.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.17.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.17.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.17.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.17.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.18.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.18.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.18.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.18.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.19.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.19.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.19.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.19.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.20.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.20.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.20.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.20.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.21.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.21.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.21.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.21.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.22.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.22.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.22.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.22.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.23.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.23.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.23.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.23.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.24.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.24.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.24.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.24.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.25.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.25.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.25.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.25.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.26.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.26.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.26.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.26.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.27.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.27.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.27.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.27.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.28.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.28.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.28.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.28.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.29.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.29.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.29.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.29.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.30.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.30.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.30.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.30.self_attn.v_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.31.self_attn.q_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.31.self_attn.q_proj.lora_B.weight
+module.llama_model.base_model.model.model.layers.31.self_attn.v_proj.lora_A.weight
+module.llama_model.base_model.model.model.layers.31.self_attn.v_proj.lora_B.weight
+module.local_attn.txt.weight
+module.local_attn.txt.bias
+module.local_attn.img.weight
+module.local_attn.img.bias
+module.llama_proj.weight
+module.llama_proj.bias
+Train: data epoch: [0]  [   0/1000]  eta: 1 day, 20:49:10  lr: 0.000001  loss: 3.0892  time: 161.3504  data: 0.0000  max mem: 26094
+Train: data epoch: [0]  [  50/1000]  eta: 8:32:52  lr: 0.000001  loss: 1.8683  time: 28.7509  data: 0.0000  max mem: 30297
+Train: data epoch: [0]  [ 100/1000]  eta: 5:47:46  lr: 0.000002  loss: 1.8591  time: 12.7218  data: 0.0000  max mem: 30487
+Train: data epoch: [0]  [ 150/1000]  eta: 5:26:22  lr: 0.000002  loss: 3.2411  time: 22.9253  data: 0.0000  max mem: 30937
+Train: data epoch: [0]  [ 200/1000]  eta: 5:11:52  lr: 0.000003  loss: 1.8272  time: 42.4712  data: 0.0000  max mem: 30937
+Train: data epoch: [0]  [ 250/1000]  eta: 3:55:16  lr: 0.000003  loss: 0.5641  time: 0.4383  data: 0.0000  max mem: 30937
+Train: data epoch: [0]  [ 300/1000]  eta: 3:12:04  lr: 0.000004  loss: 1.9514  time: 5.6371  data: 0.0000  max mem: 30937
+Train: data epoch: [0]  [ 350/1000]  eta: 2:45:08  lr: 0.000004  loss: 0.7892  time: 11.0270  data: 0.0000  max mem: 32149
+Train: data epoch: [0]  [ 400/1000]  eta: 2:26:18  lr: 0.000005  loss: 1.6567  time: 9.5904  data: 0.0000  max mem: 32149
+Train: data epoch: [0]  [ 450/1000]  eta: 2:20:04  lr: 0.000005  loss: 1.0459  time: 34.1889  data: 0.0000  max mem: 32149
