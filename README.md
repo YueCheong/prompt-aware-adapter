@@ -1,39 +1,19 @@
-# MiniGPT-V
-
-# train minigptv3-llama3 stage 1
-torchrun --nproc-per-node=2 train.py --cfg-path train_configs/minigptv3_llama3_stage1_pretrain.yaml >> logs/train_minigptv3_stage1_0.log
-
-# train minigptv4-llama3 stage 1
-torchrun --nproc-per-node=4 train.py --cfg-path train_configs/minigptv4_llama3_stage1_pretrain.yaml >> logs/train_minigptv4_stage1_1.log
-
-# train minigptv4-llama3 stage 2
-torchrun --nproc-per-node=4 train.py --cfg-path train_configs/minigptv4_llama3_stage2_finetune.yaml >> logs/train_minigptv4_stage2_1.log
-
-# train minigptv4-llama3 stage 3
-torchrun --nproc-per-node=4 train.py --cfg-path train_configs/minigptv4_llama3_stage3_finetune.yaml >> logs/train_minigptv4_stage3_1.log
 
 
+<font size='5'>**Prompt-Aware Adapter: Learning Adaptive Visual Tokens for Multimodal Large Language Models**</font>
 
-<font size='5'>**MiniGPT-v2: Large Language Model as a Unified Interface for Vision-Language Multi-task Learning**</font>
+Yue Zhang, Hehe Fan*, Wei Ji, Yongkang Wong, Roger Zimmermann, Yi Yang
 
-Jun Chen, Deyao Zhu, Xiaoqian Shen, Xiang Li, Zechun Liu, Pengchuan Zhang, Raghuraman Krishnamoorthi, Vikas Chandra, Yunyang Xiong☨, Mohamed Elhoseiny☨
+*corresponding author
 
-☨equal last author
+<!-- <a href='https://github.com/YueCheong/prompt-aware-adapter'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='https://arxiv.org/abs/2310.09478.pdf'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>  <a href='https://huggingface.co/spaces/Vision-CAIR/MiniGPT-v2'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'> <a href='https://minigpt-v2.github.io'><img src='https://img.shields.io/badge/Gradio-Demo-blue'></a> [![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://www.youtube.com/watch?v=atFCwV2hSY4) -->
 
-<a href='https://minigpt-v2.github.io'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='https://arxiv.org/abs/2310.09478.pdf'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>  <a href='https://huggingface.co/spaces/Vision-CAIR/MiniGPT-v2'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'> <a href='https://minigpt-v2.github.io'><img src='https://img.shields.io/badge/Gradio-Demo-blue'></a> [![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://www.youtube.com/watch?v=atFCwV2hSY4)
+<!-- <a href='https://minigpt-v2.github.io'><img src='https://img.shields.io/badge/Project-Page-Green'></a> <a href='https://arxiv.org/abs/2310.09478.pdf'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>  <a href='https://huggingface.co/spaces/Vision-CAIR/MiniGPT-v2'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'> <a href='https://minigpt-v2.github.io'><img src='https://img.shields.io/badge/Gradio-Demo-blue'></a> [![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://www.youtube.com/watch?v=atFCwV2hSY4) -->
 
 
-<font size='5'> **MiniGPT-4: Enhancing Vision-language Understanding with Advanced Large Language Models**</font>
+*Zhejiang University, Nanjing University, National University of Singapore*
 
-Deyao Zhu*, Jun Chen*, Xiaoqian Shen, Xiang Li, Mohamed Elhoseiny
-
-*equal contribution
-
-<a href='https://minigpt-4.github.io'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  <a href='https://arxiv.org/abs/2304.10592'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://huggingface.co/spaces/Vision-CAIR/minigpt4'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue'></a> <a href='https://huggingface.co/Vision-CAIR/MiniGPT-4'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a> [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1OK4kYsZphwt5DXchKkzMBjYF6jnkqh4R?usp=sharing) [![YouTube](https://badges.aleen42.com/src/youtube.svg)](https://www.youtube.com/watch?v=__tftoxpBAw&feature=youtu.be)
-
-*King Abdullah University of Science and Technology*
-
-## 💡 Get help - [Q&A](https://github.com/Vision-CAIR/MiniGPT-4/discussions/categories/q-a) or [Discord 💬](https://discord.gg/5WdJkjbAeE)
+<!-- ## 💡 Get help - [Q&A](https://github.com/Vision-CAIR/MiniGPT-4/discussions/categories/q-a) or [Discord 💬](https://discord.gg/5WdJkjbAeE)
 
 <font size='4'> **Example Community Efforts Built on Top of MiniGPT-4 ** </font> 
   
@@ -80,7 +60,7 @@ Click the image to chat with MiniGPT-4 around your images
 ![find wild](figs/examples/wop_2.png) |  ![write story](figs/examples/ad_2.png)
 ![solve problem](figs/examples/fix_1.png)  |  ![write Poem](figs/examples/rhyme_1.png)
 
-More examples can be found in the [project page](https://minigpt-4.github.io).
+More examples can be found in the [project page](https://minigpt-4.github.io). -->
 
 
 
@@ -92,15 +72,16 @@ More examples can be found in the [project page](https://minigpt-4.github.io).
 Git clone our repository, creating a python environment and activate it via the following command
 
 ```bash
-git clone https://github.com/Vision-CAIR/MiniGPT-4.git
-cd MiniGPT-4
+git clone git@github.com:YueCheong/prompt-aware-adapter.git
+cd prompt-aware-adapter
 conda env create -f environment.yml
-conda activate minigptv
+conda activate paa
 ```
 
 
 **2. Prepare the pretrained LLM weights**
 
+**Prompt-Aware Adapter** is built on MiniGPT-v2 and MiniGPT-4.
 **MiniGPT-v2** is based on Llama2 Chat 7B. For **MiniGPT-4**, we have both Vicuna V0 and Llama 2 version.
 Download the corresponding LLM weights from the following huggingface space via clone the repository using git-lfs.
 
@@ -194,7 +175,7 @@ For finetuning details of MiniGPT-v2, check [here](eval_scripts/EVAL_README.md)
 + [LLaMA](https://github.com/facebookresearch/llama) The strong open-sourced LLaMA 2 language model.
 
 
-If you're using MiniGPT-4/MiniGPT-v2 in your research or applications, please cite using this BibTeX:
+<!-- If you're using MiniGPT-4/MiniGPT-v2 in your research or applications, please cite using this BibTeX:
 ```bibtex
 
 
@@ -210,8 +191,8 @@ If you're using MiniGPT-4/MiniGPT-v2 in your research or applications, please ci
   author={Zhu, Deyao and Chen, Jun and Shen, Xiaoqian and Li, Xiang and Elhoseiny, Mohamed},
   journal={arXiv preprint arXiv:2304.10592},
   year={2023}
-}
-```
+} -->
+<!-- ``` -->
 
 
 ## License
